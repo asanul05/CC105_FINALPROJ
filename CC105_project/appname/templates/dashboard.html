@@ -1,0 +1,91 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/predict.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div style="text-align:right; margin-bottom: 1rem;">
+            <button class="toggle-btn" onclick="window.location.href='{% url 'predict' %}'">Go to Predict</button>
+        </div>
+        <div class="dashboard-title">Dashboard</div>
+        <div class="stats-section">
+            <h3 style="color:#fff;">Dataset Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size:2rem; font-weight:bold;">{{ num_records }}</div>
+                    <div>Number of Records</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size:1.1rem;">Feature Summary</div>
+                    <pre style="color:#fff; text-align:left; font-size:0.95rem; background:transparent; border:none; white-space:pre-wrap; word-break:break-word; max-width: 250px; overflow-x: auto;">{{ feature_summary }}</pre>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size:1.1rem;">Target Distribution</div>
+                    <pre style="color:#fff; text-align:left; font-size:0.95rem; background:transparent; border:none; white-space:pre-wrap; word-break:break-word; max-width: 250px; overflow-x: auto;">{{ target_distribution }}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="performance-section">
+            <h3 style="color:#fff;">Model Performance</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size:2rem; font-weight:bold;">{{ accuracy_score }}</div>
+                    <div>Accuracy Score</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size:1.1rem;">Confusion Matrix</div>
+                    <div class="confusion-matrix">{{ confusion_matrix|linebreaksbr }}</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size:1.1rem;">Loss Value</div>
+                    <div style="font-size:1.5rem;">{{ loss_value }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="charts-section">
+            <div class="chart-card">
+                <h4 style="color:#fff; text-align:center;">Target Distribution</h4>
+                <img src="data:image/png;base64,{{ target_dist }}" alt="Target Distribution">
+            </div>
+            <div class="chart-card">
+                <h4 style="color:#fff; text-align:center;">Feature Example (Bar Chart)</h4>
+                <canvas id="featureBarChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        const targetPieData = {
+            labels: {{ target_labels|safe }},
+            datasets: [{
+                data: {{ target_values|safe }},
+                backgroundColor: ['#4CAF50', '#ff5252', '#ffd600'],
+            }]
+        };
+        const featureBarData = {
+            labels: {{ feature_labels|safe }},
+            datasets: [{
+                label: 'Feature Example',
+                data: {{ feature_values|safe }},
+                backgroundColor: '#4CAF50',
+            }]
+        };
+        new Chart(document.getElementById('targetPieChart'), {
+            type: 'pie',
+            data: targetPieData,
+        });
+        new Chart(document.getElementById('featureBarChart'), {
+            type: 'bar',
+            data: featureBarData,
+            options: {
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    </script>
+</body>
+</html>

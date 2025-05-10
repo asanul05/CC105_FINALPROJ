@@ -1,0 +1,70 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Voyage Oracle</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="logo">
+                <i class="fas fa-globe-americas"></i>
+                <h1>Travel Voyage Oracle</h1>
+            </div>
+            <nav>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
+                {% endif %}
+            </nav>
+        </header>
+
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Smart Travel Insurance Prediction</h2>
+                <p>Experience worry-free travel with our AI-powered insurance prediction system.</p>
+                <div class="cta-buttons">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'predict' %}" class="cta-primary">Predict Now!</a>
+                        <a href="{% url 'dashboard' %}" class="cta-secondary">Dashboard</a>
+                    {% else %}
+                        <a href="{% url 'login' %}?next={% url 'predict' %}" class="cta-primary">Predict Now!</a>
+                        <a href="{% url 'login' %}?next={% url 'dashboard' %}" class="cta-secondary">Dashboard</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'images/hero.jpg' %}" alt="Travel Insurance" class="hero-img">
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> support@travelvoyageoracle.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Travel Voyage Oracle. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

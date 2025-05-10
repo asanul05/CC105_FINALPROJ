@@ -1,0 +1,189 @@
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.predict-container {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.predict-container h2 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto 1rem auto;
+    text-align: left;
+}
+
+.form-group label {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.85);
+    color: #222;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+}
+
+button[type="submit"] {
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 1rem 0;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+button[type="submit"]:hover {
+    background: #388e3c;
+}
+
+.alert-danger {
+    background: #ffcccc;
+    color: #b71c1c;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.prediction-result {
+    margin-top: 2rem;
+    padding: 1.2rem 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(31, 38, 135, 0.15);
+}
+
+.prediction-result.text-success {
+    color: #43e97b;
+}
+.prediction-result.text-danger {
+    color: #ff5252;
+}
+.prediction-result.text-warning {
+    color: #ffd600;
+}
+
+.toggle-btn {
+    display: inline-block;
+    background: #4CAF50;
+    color: #fff !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+.toggle-btn:hover {
+    background: #388e3c;
+    color: #fff !important;
+}
+ 
+
+
+
+
+.dashboard-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.10);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+        }
+        .dashboard-title {
+            color: #fff;
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .stats-section, .performance-section {
+            margin-bottom: 2.5rem;
+        }
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.18);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            color: #fff;
+            min-width: 180px;
+            flex: 1 1 200px;
+            text-align: center;
+        }
+        .charts-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .chart-card {
+            background: rgba(255,255,255,0.18);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 350px;
+            min-width: 300px;
+        }
+        .confusion-matrix {
+            color: #fff;
+            margin-top: 1rem;
+            text-align: center;
+        }

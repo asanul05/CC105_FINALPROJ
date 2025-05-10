@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/predict.css' %}">
+</head>
+<body>
+    <div class="predict-container">
+        <div style="text-align:right; margin-bottom: 1rem;">
+            <button class="toggle-btn" onclick="window.location.href='{% url 'dashboard' %}'">Go to Dashboard</button>
+        </div>
+        <h2>Make a Prediction</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="alert-danger">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+            <div class="prediction-result{% if prediction == 'Will likely buy' %} text-success{% elif prediction == 'Will likely not buy' %} text-danger{% else %} text-warning{% endif %}">
+                {% if prediction == "Will likely buy" %}
+                    🧳 This customer is likely to buy travel insurance.
+                {% elif prediction == "Will likely not buy" %}
+                    ❌ This customer is unlikely to buy travel insurance.
+                {% else %}
+                    {{ prediction }}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

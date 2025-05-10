@@ -1,0 +1,117 @@
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.login-container h2 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 1.05rem;
+    background: rgba(255,255,255,0.85);
+    color: #222;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 1rem 0;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    max-width: 320px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+button[type="submit"]:hover {
+    background: #388e3c;
+}
+
+form label {
+    color: #fff;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+    display: block;
+}
+
+p, label {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.login-container p {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.alert-danger {
+    background: #ffcccc;
+    color: #b71c1c;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #388e3c;
+    text-decoration: underline;
+}
+
+.helptext {
+    display: none !important;
+} 
