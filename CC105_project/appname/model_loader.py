@@ -2,19 +2,25 @@ import joblib
 import os
 from django.conf import settings
 import pandas as pd
+import numpy as np
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 MODEL_PATH = os.path.join(settings.BASE_DIR, 'appname', 'model', 'best_model.pkl')
 SCALER_PATH = os.path.join(settings.BASE_DIR, 'appname', 'model', 'scaler.pkl')
 LABEL_ENCODER_PATH = os.path.join(settings.BASE_DIR, 'appname', 'model', 'label_encoder.pkl')
 METADATA_PATH = os.path.join(settings.BASE_DIR, 'appname', 'model', 'feature_metadata.pkl')
+TRAINED_DATA_PATH = os.path.join(settings.BASE_DIR, 'appname', 'model', 'trained_data.joblib')
 
+# Load model and preprocessing components
 model = joblib.load(MODEL_PATH)
 scaler = joblib.load(SCALER_PATH)
 label_encoder = joblib.load(LABEL_ENCODER_PATH)
 metadata = joblib.load(METADATA_PATH)
 numeric_features = metadata['numeric_features']
-feature_columns = ['Age', 'GraduateOrNot', 'AnnualIncome', 'FamilyMembers', 'ChronicDiseases', 'FrequentFlyer', 'EverTravelledAbroad', 'Employment_Type_Government_Sector', 'Employment_Type_Private_Sector_or_Self_Employed']
+feature_columns = metadata['feature_columns']
+# feature_columns = ['Age', 'GraduateOrNot', 'AnnualIncome', 'FamilyMembers', 'ChronicDiseases', 'FrequentFlyer', 'EverTravelledAbroad', 'Employment_Type_Government_Sector', 'Employment_Type_Private_Sector_or_Self_Employed']
 # feature_columns = ['Age', 'GraduateOrNot', 'AnnualIncome', 'FamilyMembers', 'ChronicDiseases', 'FrequentFlyer', 'EverTravelledAbroad', 'Employment Type_Government Sector', 'Employment Type_Private Sector/Self Employed']
+
 
 
 def predict_insurance(form_data):

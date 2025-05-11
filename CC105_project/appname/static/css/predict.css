@@ -187,3 +187,25 @@ button[type="submit"]:hover {
             margin-top: 1rem;
             text-align: center;
         }
+
+.navigation-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.nav-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #ffd54f;
+    color: #23272b;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #ffecb3;
+}

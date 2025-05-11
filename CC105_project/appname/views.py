@@ -1,12 +1,24 @@
 from django.shortcuts import render, redirect
 from .forms import PredictionForm, CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from . model_loader import predict_insurance
 from appname import model_loader
 import pandas as pd
 import os
+<<<<<<< HEAD
+=======
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, accuracy_score
+from io import BytesIO
+import base64
+>>>>>>> 9893038973993e121a6649ce0ffebe6967b3442a
 
 
 def home(request):
@@ -63,26 +75,26 @@ def predict(request):
 @login_required
 def dashboard(request):
     num_records = 1000
-    feature_summary = "Age: mean=35, AnnualIncome: mean=50000, FamilyMembers: mean=3"
-    target_distribution = "Will Avail: 600,           Will Not Avail: 400"
-    accuracy_score = '82%'
-    confusion_matrix = "[[300, 50], [30, 620]]"
-    loss_value = 0.16
+    target_distribution = "Will Avail: 600, Will Not Avail: 400"
+    accuracy_score = '84.17%'
+    total_predictions = 1987
     target_labels = "Will Avail,Will Not Avail"
-    target_values = "600,400"
-    feature_labels = "Age,AnnualIncome,FamilyMembers"
-    feature_values = "35,50000,3"
+    target_values = "710,1277"
+    feature_labels = ["Age","AnnualIncome","FamilyMembers"]
+    feature_values = ["35","50000","3"]
+    feature_stats = list(zip(feature_labels, feature_values))
+    feature_labels_str = ",".join(feature_labels)
+    feature_values_str = ",".join(feature_values)
 
     context = {
         'num_records': num_records,
-        'feature_summary': feature_summary,
         'target_distribution': target_distribution,
         'accuracy_score': accuracy_score,
-        'confusion_matrix': confusion_matrix,
-        'loss_value': loss_value,
+        'total_predictions': total_predictions,
         'target_labels': target_labels,
         'target_values': target_values,
-        'feature_labels': feature_labels,
-        'feature_values': feature_values,
+        'feature_labels': feature_labels_str,
+        'feature_values': feature_values_str,
+        'feature_stats': feature_stats,
     }
     return render(request, 'dashboard.html', context)

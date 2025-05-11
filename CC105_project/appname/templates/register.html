@@ -1,8 +1,9 @@
-<!-- register.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
+<<<<<<< HEAD
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
@@ -12,5 +13,42 @@
     <form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Register</button></form>
     <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
   </div>
+=======
+    <link rel="stylesheet" href="{% static 'appname/css/register.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Quality Wine Website Checker!</h1>
+        </div>
+    </div>
+
+    <div class="registration-container">
+        <h2>Create Your Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="{{ form.username.id_for_label }}">Email:</label>
+            {{ form.username }}
+            {% for error in form.username.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+            {% for error in form.password1.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+            {{ form.password2 }}
+            {% for error in form.password2.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <button type="submit">Register</button>
+        </form>
+        <p>Have an account already? <a href="{% url 'login' %}">Click here!</a></p>
+    </div>
+>>>>>>> 9893038973993e121a6649ce0ffebe6967b3442a
 </body>
 </html>

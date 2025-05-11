@@ -1,8 +1,9 @@
-<!-- login.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
+<<<<<<< HEAD
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
@@ -12,5 +13,35 @@
     <form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Login</button></form>
     <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
   </div>
+=======
+    <link rel="stylesheet" href="{% static 'appname/css/login.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Quality Wine Website Checker!</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="{% url 'home' %}" class="btn">Home</a>
+        </div>
+    </div>
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required> <br><br>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required> <br><br>
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account yet? <a href="{% url 'register' %}">Click here!</a></p>
+        </div>
+    </div>
+>>>>>>> 9893038973993e121a6649ce0ffebe6967b3442a
 </body>
 </html>

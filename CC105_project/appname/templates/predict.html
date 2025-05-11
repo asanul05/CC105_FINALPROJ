@@ -7,8 +7,9 @@
 </head>
 <body>
     <div class="predict-container">
-        <div style="text-align:right; margin-bottom: 1rem;">
-            <button class="toggle-btn" onclick="window.location.href='{% url 'dashboard' %}'">Go to Dashboard</button>
+        <div class="navigation-buttons">
+            <a href="{% url 'home' %}" class="nav-btn">Go to Home</a>
+            <a href="{% url 'dashboard' %}" class="nav-btn">Go to Dashboard</a>
         </div>
         <h2>Make a Prediction</h2>
         <form method="post">

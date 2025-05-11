@@ -1,7 +1,7 @@
-<!-- home.html -->
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
     <title>Travel Voyage Oracle</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -38,6 +38,66 @@
                         <a href="{% url 'login' %}?next={% url 'dashboard' %}" class="cta-secondary">Dashboard</a>
                     {% endif %}
                 </div>
+=======
+    <title>Wine App</title>
+    <link rel="stylesheet" href="{% static 'appname/css/home.css' %}">
+</head>
+<body>
+    <div class="header">
+    <div class="title">
+        <h1>Quality Wine Website Checker!</h1>
+    </div>
+    <div class="nav-buttons">
+        {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            <a href="{% url 'dashboard' %}" class="btn dashboard">Dashboard</a>
+            <a href="{% url 'start_prediction' %}" class="btn prediction">Prediction</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn">Log In</a>
+        {% endif %}
+    </div>
+</div>
+    <div class="container">
+        <div class="contain">
+            <div class="description">
+                <div>
+                    <h2>Description:</h2>
+                </div>
+                <div>
+                    <p>It is a Categorical Model where it predicts the quality of your alcohol based on:</p>
+                </div>
+                <div>
+                    <ul>
+                        <li>Fixed Acidity</li>
+                        <li>Volatile Acidity</li>
+                        <li>Citric Acid</li>
+                        <li>Residual Sugar</li>
+                        <li>Chlorides</li>
+                        <li>Free Sulfur Dioxide</li>
+                        <li>Total Sulfur Dioxide</li>
+                        <li>Density</li>
+                        <li>pH</li>
+                        <li>Sulphates</li>
+                        <li>Alcohol</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>It predicts if Quality-Low or Quality-Mid or Quality-High</p>
+                </div>
+                <div class="action">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'start_prediction' %}">Start Prediction</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">Log In To Get Started</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="photo">
+                <img src="{% static 'appname/images/wine.webp' %}" alt="Wine Image">
+>>>>>>> 9893038973993e121a6649ce0ffebe6967b3442a
             </div>
             <div class="hero-image">
                 <img src="{% static 'images/hero.jpg' %}" alt="Travel Insurance" class="hero-img">

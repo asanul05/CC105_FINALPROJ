@@ -12,7 +12,7 @@ class Prediction(models.Model):
     employment_type_private_sector_or_self_employed = models.BooleanField()
     graduate_or_not = models.BooleanField()
     age = models.IntegerField()
-    prediction = models.BooleanField()  # True if likely to buy, False otherwise
+    prediction = models.BooleanField()  
     probability = models.FloatField()
     prediction_timestamp = models.DateTimeField(auto_now_add=True)
 
